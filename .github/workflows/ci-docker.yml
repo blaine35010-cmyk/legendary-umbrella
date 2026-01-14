@@ -1,0 +1,78 @@
+name: CI - Build Docker & smoke tests
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*', '*' ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: false
+          tags: court-ai:ci
+
+      - name: Login to Docker Hub (if provided)
+        if: secrets.DOCKER_USERNAME != '' && secrets.DOCKER_PASSWORD != ''
+        uses: docker/login-action@v2
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Login to GHCR (if available)
+        if: secrets.GITHUB_TOKEN != ''
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish image (tags only)
+        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/court-ai:${{ github.ref_name }}
+            ghcr.io/${{ github.repository_owner }}/court-ai:latest
+            ${{ secrets.DOCKER_REGISTRY || 'docker.io' }}/${{ secrets.DOCKER_USERNAME }}/court-ai:${{ github.ref_name }}
+            ${{ secrets.DOCKER_REGISTRY || 'docker.io' }}/${{ secrets.DOCKER_USERNAME }}/court-ai:latest
+          build-args: |
+            GIT_COMMIT=${{ github.sha }}
+        env:
+          DOCKER_CLI_EXPERIMENTAL: enabled
+
+      - name: Run container
+        run: |
+          docker run -d --name court-ai-run -p 8000:8000 court-ai:ci
+          for i in $(seq 1 20); do
+            if curl -sSf http://127.0.0.1:8000/health >/dev/null 2>&1; then
+              echo "server up"; break
+            fi
+            echo "waiting for server... ($i)"; sleep 2
+          done
+
+      - name: Smoke test - POST /ask
+        run: |
+          set -e
+          curl -sS -X POST "http://127.0.0.1:8000/ask" -H "Content-Type: application/json" -d '{"question":"Summarize the Final Trial Preparation Summary.","format":"compact"}' | jq .
+
+      - name: Stop container
+        run: docker rm -f court-ai-run

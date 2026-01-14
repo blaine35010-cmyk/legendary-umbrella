@@ -1,0 +1,9 @@
+
+{
+  "case_root": "C:\\Users\\blain\\Dropbox\\Master_Court_Files",
+  "ignore_folders": ["archive", "old", "tmp"],
+  "file_types": [".pdf", ".docx", ".txt", ".eml", ".png", ".jpg"],
+  "chunk_size": 1200,
+  "chunk_overlap": 200
+}
+

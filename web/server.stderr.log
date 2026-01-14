@@ -1,0 +1,36 @@
+2026-01-13 14:24:18,616 INFO: wrote port=8001 pid=6916
+2026-01-13 14:24:18,616 INFO: simple_server running on http://127.0.0.1:8001
+2026-01-13 14:28:20,924 INFO: /ask request: List recent files (collection=court-files, top_k=5)
+2026-01-13 14:28:20,927 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:20,928 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 79.67it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  9.30it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  9.24it/s]
+2026-01-13 14:28:22,679 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:22] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:22,998 INFO: /ask request: Any orders from 2024 (collection=court-files, top_k=5)
+2026-01-13 14:28:23,001 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:23,001 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 78.16it/s]
+2026-01-13 14:28:24,065 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:24] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:24,386 INFO: /ask request: List recent PDF files (collection=court-files, top_k=5)
+2026-01-13 14:28:24,389 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:24,389 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 96.12it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.83it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.77it/s]
+2026-01-13 14:28:25,579 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:25] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:25,905 INFO: /ask request: Any bankruptcy documents? (collection=court-files, top_k=5)
+2026-01-13 14:28:25,908 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:25,908 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 93.07it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 14.00it/s]
+2026-01-13 14:28:27,059 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:27] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:27,362 INFO: /ask request: Summarize case 3:25-cv-00721-BL (collection=court-files, top_k=3)
+2026-01-13 14:28:27,365 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:27,365 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 70.14it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 13.48it/s]
+2026-01-13 14:28:28,494 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:28] "POST /ask HTTP/1.1" 200 -
+
