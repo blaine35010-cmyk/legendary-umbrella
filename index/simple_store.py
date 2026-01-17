@@ -5,6 +5,34 @@ from pathlib import Path
 import numpy as np
 
 
+class SimpleStore:
+    def __init__(self, embeddings: np.ndarray, metadata: List[Dict]):
+        self.embeddings = embeddings
+        self.metadata = metadata
+
+    @classmethod
+    def load(cls, embeddings_path: str, metadata_path: str):
+        embeddings = np.load(embeddings_path)
+        with open(metadata_path, 'r') as f:
+            metadata = json.load(f)
+        return cls(embeddings, metadata)
+
+    def search(self, query_embedding: np.ndarray, top_k: int = 5):
+        # cosine similarity
+        embs_norm = self.embeddings / np.linalg.norm(self.embeddings, axis=1, keepdims=True)
+        vec_norm = query_embedding / np.linalg.norm(query_embedding)
+        sims = embs_norm.dot(vec_norm)
+        if len(sims) <= top_k:
+            idx = sims.argsort()[::-1]
+        else:
+            idx = np.argpartition(-sims, top_k)[:top_k]
+            idx = idx[np.argsort(-sims[idx])]
+        results = []
+        for i in idx:
+            results.append(self.metadata[int(i)])
+        return results
+
+
 def _dir(name: str):
     base = Path(os.path.dirname(os.path.dirname(__file__))) / "data" / "vector_store"
     d = base / name
