@@ -20,7 +20,7 @@ A local-first AI agent for ingesting, indexing, and querying court case files. U
 To enable generative responses using OpenAI ChatGPT:
 1. Get an OpenAI API key from https://platform.openai.com/api-keys.
 2. Set the environment variable: `export OPENAI_API_KEY=your_key_here`
-3. The agent will use ChatGPT for answers when the key is provided, falling back to retrieval-only if not.
+3. The agent will automatically choose the best available model (GPT-4 if accessible, otherwise GPT-3.5-turbo), falling back to retrieval-only if no API access.
 
 ## Docker Usage
 - Pull image: `docker pull ghcr.io/blaine35010-cmyk/court-ai:latest`

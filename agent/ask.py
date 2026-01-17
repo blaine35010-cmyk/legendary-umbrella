@@ -32,17 +32,36 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key:
         client = OpenAI(api_key=api_key)
-        try:
-            prompt = f"You are a helpful assistant answering questions about court cases. Use the following context to answer the question accurately. If the context doesn't contain enough information, say so.\n\nContext:\n{context}\n\nQuestion: {question}"
-            response = client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}],
-                max_tokens=500,
-                temperature=0.1
-            )
-            answer = response.choices[0].message.content.strip()
-        except Exception as e:
-            answer = f"Error with OpenAI: {str(e)}. Falling back to retrieval.\n\n{context[:1000]}..."
+        # Try GPT-4 first, fall back to GPT-3.5-turbo if access denied
+        models_to_try = ["gpt-4", "gpt-3.5-turbo"]
+        answer = None
+        for model in models_to_try:
+            try:
+                prompt = f"You are a helpful assistant answering questions about court cases. Use the following context to answer the question accurately. If the context doesn't contain enough information, say so.\n\nContext:\n{context}\n\nQuestion: {question}"
+                response = client.chat.completions.create(
+                    model=model,
+                    messages=[{"role": "user", "content": prompt}],
+                    max_tokens=500,
+                    temperature=0.1
+                )
+                answer = response.choices[0].message.content.strip()
+                break  # Success, use this answer
+            except Exception as e:
+                error_str = str(e).lower()
+                if "insufficient_quota" in error_str or "billing" in error_str:
+                    # Quota issue, stop trying
+                    answer = f"Error with OpenAI: {str(e)}. Falling back to retrieval.\n\n{context[:1000]}..."
+                    break
+                elif "model" in error_str and ("not found" in error_str or "access" in error_str):
+                    # Model not accessible, try next
+                    continue
+                else:
+                    # Other error, fall back
+                    answer = f"Error with OpenAI: {str(e)}. Falling back to retrieval.\n\n{context[:1000]}..."
+                    break
+        if answer is None:
+            # All models failed, fall back
+            answer = f"Error with OpenAI: Unable to access any models. Falling back to retrieval.\n\n{context[:1000]}..."
     else:
         # Fallback to retrieval
         if format == "compact":
