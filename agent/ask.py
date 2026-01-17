@@ -6,7 +6,7 @@ from openai import OpenAI
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def ask(question, collection="court-files", top_k=3, format="compact", path_contains=None):
+def ask(question, collection="court-files", top_k=5, format="compact", path_contains=None):
     store_path = f"data/{collection}_embeddings.npy"
     metadata_path = f"data/{collection}_metadata.json"
     
@@ -39,12 +39,25 @@ def ask(question, collection="court-files", top_k=3, format="compact", path_cont
         answer = None
         for model_name in models_to_try:
             try:
-                prompt = f"You are a helpful assistant answering questions about court cases. Use the following context to answer the question accurately. If the context doesn't contain enough information, say so.\n\nContext:\n{context}\n\nQuestion: {question}"
+                prompt = f"""You are an expert legal assistant specializing in Alabama family law and court procedures. Your role is to analyze court documents and provide informed, actionable guidance.
+
+Analyze the provided court documents to answer the question. Guidelines:
+- Synthesize information across multiple documents when relevant
+- For trial planning or legal strategy requests, organize with clear sections (Key Issues, Facts, Challenges, Recommendations)
+- Reference specific dates, names, case numbers, and facts from the documents
+- Provide practical, actionable recommendations based on Alabama law
+- If information is missing, clearly state what additional documents would strengthen the analysis
+- Be specific and direct, not vague
+
+Court Documents:
+{context}
+
+Question: {question}"""
                 response = client.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
-                    max_tokens=500,
-                    temperature=0.1
+                    max_tokens=1000,
+                    temperature=0.3
                 )
                 answer = response.choices[0].message.content.strip()
                 break  # Success, use this answer
