@@ -26,7 +26,7 @@ def health():
 
 @app.post("/ask")
 def do_ask(q: Query):
-    return {"answer": ask(q.question, collection=q.collection or "court-files", top_k=q.top_k or 5, format_mode=q.format or "compact", path_contains=q.path_contains)}
+    return {"answer": ask(q.question, collection=q.collection or "court-files", top_k=q.top_k or 5, format=q.format or "compact", path_contains=q.path_contains)}
 
 
 @app.post("/update")
