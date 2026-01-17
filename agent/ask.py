@@ -6,7 +6,7 @@ from openai import OpenAI
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def ask(question, collection="court-files", top_k=5, format="compact", path_contains=None):
+def ask(question, collection="court-files", top_k=10, format="compact", path_contains=None):
     store_path = f"data/{collection}_embeddings.npy"
     metadata_path = f"data/{collection}_metadata.json"
     
@@ -25,8 +25,8 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
     for result in results:
         if path_contains and path_contains not in result['path']:
             continue
-        # Truncate each chunk to 500 chars for context
-        chunk_text = result['text'][:500] + "..." if len(result['text']) > 500 else result['text']
+        # Truncate each chunk to 600 chars for context  
+        chunk_text = result['text'][:600] + "..." if len(result['text']) > 600 else result['text']
         context += chunk_text + "\n\n"
         sources.append({"path": result['path'], "chunk": result['chunk_id']})
     
@@ -43,10 +43,13 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
 
 Analyze the provided court documents to answer the question. Guidelines:
 - Synthesize information across multiple documents when relevant
-- For trial planning or legal strategy requests, organize with clear sections (Key Issues, Facts, Challenges, Recommendations)
+- IMPORTANT: For trial planning requests, first identify the CORE DISPUTE (custody, visitation, child support, property division, contempt, etc.) from the documents
+- Extract and highlight the substantive legal issues (not just procedural matters like hearing dates)
+- Identify what each party is claiming/defending
+- For trial preparation, organize with: Core Dispute, Your Party's Position, Opposing Position, Key Evidence Needed, Trial Strategy
 - Reference specific dates, names, case numbers, and facts from the documents
-- Provide practical, actionable recommendations based on Alabama law
-- If information is missing, clearly state what additional documents would strengthen the analysis
+- Provide practical, actionable recommendations based on Alabama law and the actual issues at stake
+- If the question is vague about what's being disputed, analyze the documents to determine the actual dispute and provide comprehensive trial prep
 - Be specific and direct, not vague
 
 Court Documents:

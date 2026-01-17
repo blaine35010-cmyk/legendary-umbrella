@@ -6,7 +6,6 @@ pytesseract
 Pillow
 python-docx
 sentence-transformers
-chromadb
 pytest
 flake8
 openai
