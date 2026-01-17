@@ -9,3 +9,4 @@ sentence-transformers
 chromadb
 pytest
 flake8
+openai
