@@ -34,33 +34,37 @@ def ask(question, collection="court-files", top_k=10, format="compact", path_con
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key:
         client = OpenAI(api_key=api_key)
-        # Try GPT-4 first, fall back to GPT-3.5-turbo if access denied
+        # Try GPT-4 first for better reasoning, fall back to GPT-3.5-turbo
         models_to_try = ["gpt-4", "gpt-3.5-turbo"]
         answer = None
         for model_name in models_to_try:
             try:
-                prompt = f"""You are an expert legal assistant specializing in Alabama family law and court procedures. Your role is to analyze court documents and provide informed, actionable guidance.
+                prompt = f"""You are an elite legal analyst with expertise in Alabama family law. Analyze these court documents with deep reasoning like GPT-4o.
 
-Analyze the provided court documents to answer the question. Guidelines:
-- Synthesize information across multiple documents when relevant
-- IMPORTANT: For trial planning requests, first identify the CORE DISPUTE (custody, visitation, child support, property division, contempt, etc.) from the documents
-- Extract and highlight the substantive legal issues (not just procedural matters like hearing dates)
-- Identify what each party is claiming/defending
-- For trial preparation, organize with: Core Dispute, Your Party's Position, Opposing Position, Key Evidence Needed, Trial Strategy
-- Reference specific dates, names, case numbers, and facts from the documents
-- Provide practical, actionable recommendations based on Alabama law and the actual issues at stake
-- If the question is vague about what's being disputed, analyze the documents to determine the actual dispute and provide comprehensive trial prep
-- Be specific and direct, not vague
+CRITICAL ANALYSIS FRAMEWORK:
+1. TIMELINE: Extract and organize EVERY date - court orders, filings, hearings, events
+2. SUBSTANTIVE FACTS: What actually happened? What are the specific allegations/claims?
+3. DISPUTE: What is the actual legal dispute? (custody, visitation, contempt, support, property, etc.)
+4. EVIDENCE: What evidence exists? What is strongest for each side?
+5. PROCEDURAL STATUS: What is current stage? What hearing is coming?
+
+KEY INSTRUCTIONS:
+- Be assertive and specific. Use exact names, dates, and facts.
+- Don't say "not specified" - infer from evidence and state confidence level
+- Connect dots between documents - understand the case narrative
+- For trial prep: provide Timeline, Core Dispute, Your Strongest Facts, Opposing Position, Trial Preparation Checklist
 
 Court Documents:
 {context}
 
-Question: {question}"""
+Question: {question}
+
+RESPOND WITH DEEP, SPECIFIC ANALYSIS - Think like a trial lawyer preparing for court."""
                 response = client.chat.completions.create(
                     model=model_name,
                     messages=[{"role": "user", "content": prompt}],
-                    max_tokens=1000,
-                    temperature=0.3
+                    max_tokens=1500,
+                    temperature=0.15
                 )
                 answer = response.choices[0].message.content.strip()
                 break  # Success, use this answer
