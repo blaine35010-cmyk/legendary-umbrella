@@ -9,7 +9,7 @@ def load_settings():
 
 def scan_case_files():
     settings = load_settings()
-    root = settings["case_root"]
+    root = os.environ.get("CASE_ROOT", settings["case_root"])
     ignore = set(settings.get("ignore_folders", []))
 
     file_list = []
