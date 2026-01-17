@@ -6,7 +6,7 @@ from openai import OpenAI
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def ask(question, collection="court-files", top_k=5, format="compact", path_contains=None):
+def ask(question, collection="court-files", top_k=3, format="compact", path_contains=None):
     store_path = f"data/{collection}_embeddings.npy"
     metadata_path = f"data/{collection}_metadata.json"
     
@@ -25,7 +25,9 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
     for result in results:
         if path_contains and path_contains not in result['path']:
             continue
-        context += result['text'] + "\n\n"
+        # Truncate each chunk to 500 chars for context
+        chunk_text = result['text'][:500] + "..." if len(result['text']) > 500 else result['text']
+        context += chunk_text + "\n\n"
         sources.append({"path": result['path'], "chunk": result['chunk_id']})
     
     # Check if OpenAI API key is set
@@ -35,11 +37,11 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
         # Try GPT-4 first, fall back to GPT-3.5-turbo if access denied
         models_to_try = ["gpt-4", "gpt-3.5-turbo"]
         answer = None
-        for model in models_to_try:
+        for model_name in models_to_try:
             try:
                 prompt = f"You are a helpful assistant answering questions about court cases. Use the following context to answer the question accurately. If the context doesn't contain enough information, say so.\n\nContext:\n{context}\n\nQuestion: {question}"
                 response = client.chat.completions.create(
-                    model=model,
+                    model=model_name,
                     messages=[{"role": "user", "content": prompt}],
                     max_tokens=500,
                     temperature=0.1
