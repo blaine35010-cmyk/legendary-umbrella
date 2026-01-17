@@ -1,14 +1,19 @@
 # Smoke Test for Court AI
 param(
-    [string]$ImageTag = "v1.3.0",
-    [string]$DropboxPath = "C:\Users\blain\Dropbox\Master_Court_Files"
+    [string]$ImageTag = "v1.3.3",
+    [string]$DropboxPath = "C:\Users\blain\Dropbox\Master_Court_Files",
+    [string]$OpenAIKey = ""
 )
 
 Write-Host "Running smoke test for Court AI"
 
 # Start container
 Write-Host "Starting container..."
-docker run -d --name court-ai-smoke -p 8002:8000 -v "${DropboxPath}:/app/dropbox" -e CASE_ROOT="/app/dropbox" "ghcr.io/blaine35010-cmyk/court-ai:$ImageTag"
+$envVars = "-e CASE_ROOT=""/app/dropbox"""
+if ($OpenAIKey) {
+    $envVars += " -e OPENAI_API_KEY=""$OpenAIKey"""
+}
+docker run -d --name court-ai-smoke -p 8002:8000 -v "${DropboxPath}:/app/dropbox" $envVars "ghcr.io/blaine35010-cmyk/court-ai:$ImageTag"
 
 Start-Sleep -Seconds 10  # Wait for startup
 
