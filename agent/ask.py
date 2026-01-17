@@ -2,7 +2,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from index.simple_store import SimpleStore
 import os
-import openai
+from openai import OpenAI
 
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
@@ -31,10 +31,10 @@ def ask(question, collection="court-files", top_k=5, format="compact", path_cont
     # Check if OpenAI API key is set
     api_key = os.getenv('OPENAI_API_KEY')
     if api_key:
-        openai.api_key = api_key
+        client = OpenAI(api_key=api_key)
         try:
             prompt = f"You are a helpful assistant answering questions about court cases. Use the following context to answer the question accurately. If the context doesn't contain enough information, say so.\n\nContext:\n{context}\n\nQuestion: {question}"
-            response = openai.ChatCompletion.create(
+            response = client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[{"role": "user", "content": prompt}],
                 max_tokens=500,
