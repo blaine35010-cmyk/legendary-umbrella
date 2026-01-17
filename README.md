@@ -20,6 +20,11 @@ A local-first AI agent for ingesting, indexing, and querying court case files. U
 - Run with volume mount: `docker run -d -p 8001:8000 -v "C:\path\to\court\files:/app/dropbox" -e CASE_ROOT="/app/dropbox" ghcr.io/blaine35010-cmyk/court-ai:latest`
 - Access UI: `http://localhost:8001`
 
+## PowerShell Helpers
+- Start: `.\start-court-ai.ps1 -ImageTag v1.3.1`
+- Stop: `.\stop-court-ai.ps1`
+- Smoke Test: `.\smoke-test.ps1 -ImageTag v1.3.1`
+
 ## API Endpoints
 - `GET /health`: Health check.
 - `POST /ask`: Query documents (JSON: {"question": "text", "format": "compact/detailed", "path_contains": "filter"}).
