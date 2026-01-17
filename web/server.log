@@ -1,0 +1,246 @@
+2026-01-13 14:09:14,249 INFO: wrote port=8000 pid=5136
+2026-01-13 14:09:14,250 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 14:09:18,164 INFO: 127.0.0.1 - - [13/Jan/2026 14:09:18] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 14:13:18,582 INFO: /ask request: List recent files (collection=court-files, top_k=5)
+2026-01-13 14:13:18,583 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 14:13:18,592 INFO: 127.0.0.1 - - [13/Jan/2026 14:13:18] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 14:24:18,615 INFO: wrote port=8000 pid=9360
+2026-01-13 14:24:18,616 INFO: wrote port=8001 pid=6916
+2026-01-13 14:24:18,616 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 14:24:18,616 INFO: simple_server running on http://127.0.0.1:8001
+2026-01-13 14:26:23,582 INFO: /ask request: List recent files (collection=court-files, top_k=5)
+2026-01-13 14:26:23,586 INFO: Use pytorch device_name: cpu
+2026-01-13 14:26:23,586 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:26:25,495 INFO: 127.0.0.1 - - [13/Jan/2026 14:26:25] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:20,924 INFO: /ask request: List recent files (collection=court-files, top_k=5)
+2026-01-13 14:28:20,927 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:20,928 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:28:22,679 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:22] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:22,998 INFO: /ask request: Any orders from 2024 (collection=court-files, top_k=5)
+2026-01-13 14:28:23,001 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:23,001 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:28:24,065 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:24] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:24,386 INFO: /ask request: List recent PDF files (collection=court-files, top_k=5)
+2026-01-13 14:28:24,389 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:24,389 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:28:25,579 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:25] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:25,905 INFO: /ask request: Any bankruptcy documents? (collection=court-files, top_k=5)
+2026-01-13 14:28:25,908 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:25,908 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:28:27,059 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:27] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 14:28:27,362 INFO: /ask request: Summarize case 3:25-cv-00721-BL (collection=court-files, top_k=3)
+2026-01-13 14:28:27,365 INFO: Use pytorch device_name: cpu
+2026-01-13 14:28:27,365 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 14:28:28,494 INFO: 127.0.0.1 - - [13/Jan/2026 14:28:28] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:34:54,836 INFO: wrote port=8000 pid=19848
+2026-01-13 18:34:54,836 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 18:41:48,518 INFO: 127.0.0.1 - - [13/Jan/2026 18:41:48] "GET / HTTP/1.1" 404 -
+
+2026-01-13 18:46:40,186 INFO: wrote port=8000 pid=12388
+2026-01-13 18:46:40,186 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 18:46:47,951 INFO: wrote port=8001 pid=19856
+2026-01-13 18:46:47,951 INFO: simple_server running on http://127.0.0.1:8001
+2026-01-13 18:46:56,810 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:46:56,810 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:46:56,821 INFO: 127.0.0.1 - - [13/Jan/2026 18:46:56] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:46:56,822 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:46:56,822 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:46:56,823 INFO: 127.0.0.1 - - [13/Jan/2026 18:46:56] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:46:56,840 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:46:56,841 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:46:56,842 INFO: 127.0.0.1 - - [13/Jan/2026 18:46:56] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:47:35,867 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:47:35,867 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:47:35,869 INFO: 127.0.0.1 - - [13/Jan/2026 18:47:35] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:47:35,880 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:47:35,880 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:47:35,882 INFO: 127.0.0.1 - - [13/Jan/2026 18:47:35] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:47:35,895 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:47:35,896 ERROR: error handling /ask
+Traceback (most recent call last):
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\web\simple_server.py", line 55, in do_POST
+    ans = ask(q, collection=collection, top_k=top_k, format_mode=format_mode, path_contains=path_contains, date_from=date_from, date_to=date_to, file_ext=file_ext)
+  File "C:\Users\blain\OneDrive\Desktop\court_ai_agent\agent\ask.py", line 48, in ask
+    raise RuntimeError("No available QA backend (cloud or local)")
+RuntimeError: No available QA backend (cloud or local)
+2026-01-13 18:47:35,897 INFO: 127.0.0.1 - - [13/Jan/2026 18:47:35] "POST /ask HTTP/1.1" 500 -
+
+2026-01-13 18:47:38,532 INFO: wrote port=8002 pid=3160
+2026-01-13 18:47:38,532 INFO: simple_server running on http://127.0.0.1:8002
+2026-01-13 18:48:31,920 INFO: wrote port=8000 pid=15740
+2026-01-13 18:48:31,921 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 18:48:32,980 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:48:32,982 INFO: Use pytorch device_name: cpu
+2026-01-13 18:48:32,983 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 18:48:34,993 INFO: 127.0.0.1 - - [13/Jan/2026 18:48:34] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:48:35,005 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:48:35,008 INFO: Use pytorch device_name: cpu
+2026-01-13 18:48:35,008 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 18:48:36,299 INFO: 127.0.0.1 - - [13/Jan/2026 18:48:36] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:48:36,322 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:48:36,325 INFO: Use pytorch device_name: cpu
+2026-01-13 18:48:36,325 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 18:48:37,600 INFO: 127.0.0.1 - - [13/Jan/2026 18:48:37] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:22,636 INFO: wrote port=8000 pid=6572
+2026-01-13 18:53:22,636 INFO: simple_server running on http://127.0.0.1:8000
+2026-01-13 18:53:23,099 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:23] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 18:53:23,101 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:53:23,103 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:23,103 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 61.86it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  9.20it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  9.16it/s]
+2026-01-13 18:53:24,887 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:24] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:24,906 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:53:24,908 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:24,909 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 32.18it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  6.92it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  6.91it/s]
+2026-01-13 18:53:26,173 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:26] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:26,188 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:53:26,191 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:26,191 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 95.72it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.32it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.29it/s]
+2026-01-13 18:53:27,401 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:27] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:27,582 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:27] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 18:53:27,584 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:53:27,587 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:27,587 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 73.09it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.29it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.27it/s]
+2026-01-13 18:53:29,130 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:29] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:29,147 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:53:29,150 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:29,150 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 92.48it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.60it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.58it/s]
+2026-01-13 18:53:30,394 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:30] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:30,412 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:53:30,414 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:30,415 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 93.65it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.71it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.70it/s]
+2026-01-13 18:53:31,638 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:31] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:31,811 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:31] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 18:53:31,812 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:53:31,814 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:31,814 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 84.95it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.45it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.43it/s]
+2026-01-13 18:53:33,087 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:33] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:33,114 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:53:33,116 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:33,116 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 93.42it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.93it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.92it/s]
+2026-01-13 18:53:34,322 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:34] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:53:34,324 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:53:34,326 INFO: Use pytorch device_name: cpu
+2026-01-13 18:53:34,326 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 77.89it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.20it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  8.18it/s]
+2026-01-13 18:53:35,649 INFO: 127.0.0.1 - - [13/Jan/2026 18:53:35] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:57:52,235 INFO: 127.0.0.1 - - [13/Jan/2026 18:57:52] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 18:57:52,282 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 18:57:52,285 INFO: Use pytorch device_name: cpu
+2026-01-13 18:57:52,285 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 80.96it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.63it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.62it/s]
+2026-01-13 18:57:54,211 INFO: 127.0.0.1 - - [13/Jan/2026 18:57:54] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:57:54,235 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 18:57:54,238 INFO: Use pytorch device_name: cpu
+2026-01-13 18:57:54,238 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 80.08it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.66it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.65it/s]
+2026-01-13 18:57:55,486 INFO: 127.0.0.1 - - [13/Jan/2026 18:57:55] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 18:57:55,512 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 18:57:55,515 INFO: Use pytorch device_name: cpu
+2026-01-13 18:57:55,515 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00, 83.53it/s]
+Batches:   0%|          | 0/1 [00:00<?, ?it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.64it/s]Batches: 100%|##########| 1/1 [00:00<00:00,  7.63it/s]
+2026-01-13 18:57:56,797 INFO: 127.0.0.1 - - [13/Jan/2026 18:57:56] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 19:04:30,736 INFO: 127.0.0.1 - - [13/Jan/2026 19:04:30] "GET /health HTTP/1.1" 200 -
+
+2026-01-13 19:04:30,754 INFO: /ask request: Summarize the Final Trial Preparation Summary. (collection=court-files, top_k=5)
+2026-01-13 19:04:30,758 INFO: Use pytorch device_name: cpu
+2026-01-13 19:04:30,759 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 19:04:32,900 INFO: 127.0.0.1 - - [13/Jan/2026 19:04:32] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 19:04:32,927 INFO: /ask request: Give a short overview of the case facts. (collection=court-files, top_k=5)
+2026-01-13 19:04:32,930 INFO: Use pytorch device_name: cpu
+2026-01-13 19:04:32,931 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 19:04:34,239 INFO: 127.0.0.1 - - [13/Jan/2026 19:04:34] "POST /ask HTTP/1.1" 200 -
+
+2026-01-13 19:04:34,266 INFO: /ask request: List important dates mentioned in the corpus. (collection=court-files, top_k=5)
+2026-01-13 19:04:34,269 INFO: Use pytorch device_name: cpu
+2026-01-13 19:04:34,270 INFO: Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2026-01-13 19:04:35,527 INFO: 127.0.0.1 - - [13/Jan/2026 19:04:35] "POST /ask HTTP/1.1" 200 -
+

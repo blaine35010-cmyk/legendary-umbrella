@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pdfplumber
+pdf2image
+pytesseract
+Pillow
+python-docx
+sentence-transformers
+chromadb
+pytest
+flake8
